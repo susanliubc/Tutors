@@ -9,12 +9,10 @@ const App = () => {
   return (
     <Provider store={store}>
       <Fragment>
-        {/* <Header /> */}
-        <h2>App Page</h2>
-        {/* <div className='container'>
-          <h3>App Title</h3>
-          {/* <Dashboard /> 
-        </div> */}
+        <Header />
+        <div className='container'>
+          <Dashboard />
+        </div>
       </Fragment>
     </Provider>
   );

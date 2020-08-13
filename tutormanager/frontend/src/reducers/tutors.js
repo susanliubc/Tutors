@@ -9,11 +9,11 @@ const tutors = (state = initState, action) => {
     case GET_TUTOR:
       return { ...state, tutors: action.payload };
     case ADD_TUTOR:
-      return { ...state, tutors: action.payload };
+      return { ...state, tutors: [...state.tutors, action.payload] };
     case DELETE_TUTOR:
       return {
         ...state,
-        tutors: state.filter(tutor => tutor.id !== action.payload)
+        tutors: state.tutors.filter(tutor => tutor.id !== action.payload)
       };
     default:
       return state;
