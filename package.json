@@ -4,8 +4,14 @@
   "description": "Full stak web app with python Django, and react/redux",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.19.2",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -20,12 +26,13 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "dev": "webpack --mode development --watch .tutormanager/frontend/src/index.js --output .tutormanager/frontend/static/main.js",
-    "build": "webpack --mode production .tutormanager/frontend/src/index.js --output .tutormanager/frontend/static/main.js"
+    "dev": "webpack --mode development --watch ./tutormanager/frontend/src/index.js --output ./tutormanager/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./tutormanager/frontend/src/index.js --output ./tutormanager/frontend/static/frontend/main.js"
   },
   "repository": {
     "type": "git",
