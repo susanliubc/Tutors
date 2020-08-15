@@ -4,6 +4,11 @@ from .serializer import TutorSerializer
 
 
 class TutorViewSet(viewsets.ModelViewSet):
-    queryset = Tutor.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = TutorSerializer
+
+    def get_queryset(self):
+        return self.request.user.tutor.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
