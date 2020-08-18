@@ -28,7 +28,7 @@ class LoginAPI(generics.RetrieveAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        _, token = AuthToken.objects.create()
+        _, token = AuthToken.objects.create(user)
         return Response({
             'user': UserSerializer(user, context=self.get_serializer_context()).data,
             'token': token
@@ -38,7 +38,7 @@ class LoginAPI(generics.RetrieveAPIView):
 
 
 class UserAPI(generics.RetrieveAPIView):
-    permission_classes = [permissions.IsAuthenticated],
+    permission_classes = [permissions.IsAuthenticated, ]
     serializer_class = UserSerializer
 
     def get_object(self):
