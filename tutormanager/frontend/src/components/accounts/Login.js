@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
-import { createMessage } from '../../actions/message';
 import PropTypes from 'prop-types';
 
 class Login extends Component {
@@ -19,8 +18,9 @@ class Login extends Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   handleSubmit = e => {
-    debugger;
+    //debugger;
     e.preventDefault();
+    console.log('login submit');
     this.props.login(this.state.username, this.state.password);
   };
 
@@ -33,14 +33,14 @@ class Login extends Component {
       <div className='col-md-6 m-auto'>
         <div className='card card-body mt-5'>
           <h2 className='text-center'>Login</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <div className='form-group'>
               <label htmlFor='username'>Username</label>
               <input
                 type='text'
                 className='form-control'
                 name='username'
-                onChange={handleChange}
+                onChange={this.handleChange}
                 value={username}
               />
             </div>
@@ -50,7 +50,7 @@ class Login extends Component {
                 type='password'
                 className='form-control'
                 name='password'
-                onChange={handleChange}
+                onChange={this.handleChange}
                 value={password}
               />
             </div>
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login, createMessage })(Login);
+export default connect(mapStateToProps, { login })(Login);

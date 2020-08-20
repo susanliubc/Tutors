@@ -1,19 +1,20 @@
 import { GET_TUTOR, ADD_TUTOR, DELETE_TUTOR, CREATE_MESSAGE } from './type';
 import axios from 'axios';
 import { returnError, createMessage } from './message';
+import { tokenConfig } from './auth';
 
 export const getTutors = () => (dispatch, getState) => {
-  console.log('get tutor');
   axios
-    .get('/api/tutors/')
+    .get('/api/tutors/', tokenConfig(getState))
     .then(res => dispatch({ type: GET_TUTOR, payload: res.data }))
-    .catch(error => console.log('error: ', error));
+    .catch(error =>
+      dispatch(returnError(error.response.data, error.response.status))
+    );
 };
 
 export const addTutor = tutor => (dispatch, getState) => {
-  console.log('add tutor');
   axios
-    .post('/api/tutors/', tutor)
+    .post('/api/tutors/', tutor, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ addTutor: 'Tutor Added' }));
       dispatch({ type: ADD_TUTOR, payload: res.data });
@@ -25,9 +26,8 @@ export const addTutor = tutor => (dispatch, getState) => {
 };
 
 export const deleteTutor = id => (dispatch, getState) => {
-  console.log('delete tutor');
   axios
-    .delete(`/api/tutors/${id}/`)
+    .delete(`/api/tutors/${id}/`, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ deleteTutor: 'Tutor Deleted' }));
       dispatch({ type: DELETE_TUTOR, payload: id });

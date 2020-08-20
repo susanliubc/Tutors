@@ -44,14 +44,14 @@ class Register extends Component {
       <div className='col-md-6 m-auto'>
         <div className='card card-body mt-5'>
           <h2 className='text-center'>Register</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <div className='form-group'>
               <label htmlFor='username'>Username</label>
               <input
                 type='text'
                 className='form-control'
                 name='username'
-                onChange={handleChange}
+                onChange={this.handleChange}
                 value={username}
               />
             </div>
@@ -61,7 +61,7 @@ class Register extends Component {
                 type='email'
                 className='form-control'
                 name='email'
-                onChange={handleChange}
+                onChange={this.handleChange}
                 value={email}
               />
             </div>
@@ -71,7 +71,7 @@ class Register extends Component {
                 type='password'
                 className='form-control'
                 name='password'
-                onChange={handleChange}
+                onChange={this.handleChange}
                 value={password}
               />
             </div>
@@ -81,7 +81,7 @@ class Register extends Component {
                 type='password2'
                 className='form-control'
                 name='password2'
-                onChange={handleChange}
+                onChange={this.handleChange}
                 value={password2}
               />
             </div>
